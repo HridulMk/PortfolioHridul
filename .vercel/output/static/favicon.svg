@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="tile">
+      <rect width="32" height="32" rx="6"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="32" height="32" fill="#f3efe6"/>
+    <rect width="5" height="32" fill="#9c3b2e"/>
+    <text x="19" y="17.2" text-anchor="middle" dominant-baseline="central"
+      font-family="Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif"
+      font-size="18" font-weight="700" fill="#1c1916">H</text>
+  </g>
+</svg>
