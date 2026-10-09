@@ -1,79 +1,71 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 const facts = [
-  { label: "Study", value: "MCA · AI & ML" },
+  { label: "Focus", value: "AI · Full-stack" },
   { label: "CGPA", value: "8.35" },
-  { label: "Base", value: "Kerala" },
+  { label: "Base", value: "Kerala, India" },
 ];
 
 export function Hero() {
   return (
-    <section id="top" className="anchor">
-      <div className="mx-auto max-w-6xl px-5 pb-16 pt-10 md:px-8 md:pb-24 md:pt-16">
-        <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-medium uppercase tracking-widest text-muted">
-          <p>Folio 01 — Portfolio</p>
+    <section id="top" className="anchor relative overflow-hidden">
+      <div className="pointer-events-none absolute -right-24 top-16 size-72 rounded-full bg-cyan-400/10 blur-3xl md:size-96" aria-hidden="true" />
+      <div className="mx-auto max-w-6xl px-5 pb-16 pt-10 sm:px-6 md:px-8 md:pb-24 md:pt-16">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">
+          <p className="inline-flex items-center gap-2"><span className="size-2 animate-pulse rounded-full bg-accent" aria-hidden="true" /> Portfolio / 2026</p>
           <p>{profile.location}</p>
         </div>
 
-        <h1 className="mt-8 font-serif text-display text-ink">
-          <span className="block">Hridul</span>
-          <span className="block italic">
-            <span className="not-italic text-accent">M </span>Anilkumar
-          </span>
-        </h1>
+        <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-[minmax(0,1.3fr)_minmax(16rem,0.7fr)] md:items-end">
+          <div>
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1.5 text-xs font-medium tracking-wide text-accent">
+              <Sparkles className="size-3.5" aria-hidden="true" /> AI · Software · Creative problem-solving
+            </p>
+            <h1 className="font-serif text-display text-ink">
+              <span className="block">Hridul</span>
+              <span className="block italic text-accent">M Anilkumar</span>
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink sm:text-xl">
+              I build thoughtful software at the intersection of AI, computer vision, and full-stack engineering.
+            </p>
+          </div>
 
-        <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:items-end">
-          <p className="max-w-xl text-lg leading-relaxed text-ink">
-            MCA graduate in artificial intelligence and machine learning. I build full-stack
-            products in Python, React, Next.js, and Django — and I stay with a problem until the
-            data and the interface agree.
-          </p>
-          <p className="text-sm leading-relaxed text-muted md:text-right">
-            Open to roles in full-stack development and machine learning.
-            <span className="mt-2 block text-ink">{profile.role}</span>
-          </p>
+          <div className="rounded-2xl border border-line bg-paper-deep/80 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Currently open to</p>
+            <p className="mt-3 text-xl font-medium text-ink">{profile.role}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              MCA graduate specializing in AI & machine learning, with hands-on experience building APIs, interfaces, and data-driven applications.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {["Python", "React", "Next.js", "Django", "Computer Vision"].map((skill) => (
+                <span key={skill} className="rounded-full border border-line px-3 py-1.5 text-xs text-muted">{skill}</span>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <dl className="mt-10 grid grid-cols-3 border-y border-line">
+        <dl className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3">
           {facts.map((fact) => (
-            <div key={fact.label} className="px-3 py-4 first:pl-0 last:pr-0 md:px-6">
-              <dt className="text-xs uppercase tracking-widest text-muted">{fact.label}</dt>
-              <dd className="mt-1 font-serif text-lg text-ink md:text-2xl">{fact.value}</dd>
+            <div key={fact.label} className="bg-paper-deep px-4 py-4 sm:px-5">
+              <dt className="text-xs uppercase tracking-[0.16em] text-muted">{fact.label}</dt>
+              <dd className="mt-1 text-lg font-medium text-ink sm:text-xl">{fact.value}</dd>
             </div>
           ))}
         </dl>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <a
-            href="#work"
-            className="press inline-flex h-12 items-center justify-center bg-ink px-5 text-sm text-paper hover:bg-accent"
-          >
-            See the work
+          <a href="#work" className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-950/30 hover:bg-cyan-200">
+            Explore projects <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="press inline-flex h-12 items-center justify-center border border-ink px-5 text-sm text-ink hover:bg-ink hover:text-paper"
-          >
-            Email Hridul
+          <a href={`mailto:${profile.email}`} className="press inline-flex min-h-12 items-center justify-center rounded-xl border border-line bg-white/5 px-5 py-3 text-sm text-ink hover:border-accent/60 hover:bg-accent/5">
+            Contact me
           </a>
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rule-link inline-flex h-12 items-center gap-1 text-sm text-ink"
-          >
-            GitHub
-            <ArrowUpRight className="size-4" aria-hidden="true" />
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" className="rule-link inline-flex min-h-12 items-center justify-center gap-1 text-sm text-ink">
+            GitHub <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rule-link inline-flex h-12 items-center gap-1 text-sm text-ink"
-          >
-            LinkedIn
-            <ArrowUpRight className="size-4" aria-hidden="true" />
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="rule-link inline-flex min-h-12 items-center justify-center gap-1 text-sm text-ink">
+            LinkedIn <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
         </div>
       </div>
