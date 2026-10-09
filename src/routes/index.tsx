@@ -8,18 +8,15 @@ import { Hero } from "@/components/hero";
 import { Skills } from "@/components/skills";
 import { Work } from "@/components/work";
 
-export const Route = createFileRoute("/")({
-  component: Home,
-});
+export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
   return (
     <>
-      <a href="#content" className="skip">
-        Skip to content
-      </a>
+      <a href="#content" className="skip">Skip to content</a>
+      <div className="site-atmosphere" aria-hidden="true" />
       <Header />
-      <main id="content">
+      <main id="content" className="relative">
         <Hero />
         <About />
         <Work />
