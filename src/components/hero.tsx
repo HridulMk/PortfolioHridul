@@ -11,13 +11,13 @@ export function Hero() {
   return (
     <section id="top" className="anchor relative overflow-hidden">
       <div className="pointer-events-none absolute -right-24 top-16 size-72 rounded-full bg-cyan-400/10 blur-3xl md:size-96" aria-hidden="true" />
-      <div className="mx-auto max-w-6xl px-5 pb-16 pt-10 sm:px-6 md:px-8 md:pb-24 md:pt-16">
+      <div className="mx-auto max-w-6xl px-5 pb-16 pt-4 sm:px-6 md:px-8 md:pb-24 md:pt-6">
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">
           <p className="inline-flex items-center gap-2"><span className="size-2 animate-pulse rounded-full bg-accent" aria-hidden="true" /> Portfolio / 2026</p>
           <p>{profile.location}</p>
         </div>
 
-        <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-[minmax(0,1.3fr)_minmax(16rem,0.7fr)] md:items-end">
+        <div className="mt-5 grid gap-10 md:mt-8 md:grid-cols-[minmax(0,1.3fr)_minmax(16rem,0.7fr)] md:items-end">
           <div>
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1.5 text-xs font-medium tracking-wide text-accent">
               <Sparkles className="size-3.5" aria-hidden="true" /> AI · Software · Creative problem-solving

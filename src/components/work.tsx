@@ -21,7 +21,7 @@ export function Work() {
           </div>
         </div>
 
-        <div className="mt-8 flex gap-2 overflow-x-auto pb-2" role="group" aria-label="Filter projects">
+        <div className="mt-8 flex flex-wrap gap-2 pb-2" role="group" aria-label="Filter projects">
           {categories.map((category) => {
             const count = category === "All" ? projects.length : projects.filter((project) => project.categories.includes(category)).length;
             const selected = filter === category;
@@ -34,13 +34,13 @@ export function Work() {
           })}
         </div>
 
-        <ul key={filter} className="shelf-enter mt-5 grid gap-4 md:grid-cols-2">
+        <ul key={filter} className="shelf-enter mt-5 grid min-w-0 gap-4 sm:grid-cols-2">
           {visible.map((project) => (
-            <li key={project.id}>
+            <li key={project.id} className="min-w-0">
               <article tabIndex={0} className="project-card group h-full outline-none">
                 <div className="flex items-start justify-between gap-4">
                   <span className="grid size-12 place-items-center rounded-xl border border-accent/25 bg-accent/[0.06] font-mono text-sm text-accent">{project.index}</span>
-                  <span className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.14em] text-muted">{project.categories.join(" / ")}</span>
+                  <span className="min-w-0 text-right text-xs uppercase tracking-[0.14em] text-muted">{project.categories.join(" / ")}</span>
                 </div>
                 <div>
                   <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">{project.kicker}</p>

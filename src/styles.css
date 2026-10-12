@@ -34,7 +34,7 @@
   }
 
   body {
-    min-width: 320px;
+    overflow-x: clip;
     font-family: var(--font-sans);
     background:
       radial-gradient(ellipse at 15% 0%, rgb(39 87 140 / 18%), transparent 38rem),
@@ -163,6 +163,21 @@
   overflow: hidden;
 }
 
+/* Keep nested layouts from expanding beyond the viewport. */
+main,
+main > section,
+main > section > div,
+footer > div {
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
 @media (min-width: 768px) {
   .drawer {
     display: none;
@@ -181,6 +196,7 @@
   border-radius: 1rem;
   background: linear-gradient(145deg, rgb(20 31 52 / 82%), rgb(8 13 24 / 94%));
   padding: 1.35rem;
+  min-width: 0;
   transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
 }
 
@@ -293,6 +309,10 @@
   .project-summary {
     color: var(--color-muted);
   }
+
+  .project-card {
+    overflow-wrap: anywhere;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -354,8 +374,8 @@ body::before { z-index: 0; opacity: 0.42; background-size: 54px 54px; mask-image
 .site-atmosphere::after { right: -18rem; top: 54%; background: #7657ff; animation-delay: -9s; }
 header, main, footer { position: relative; z-index: 1; }
 main > section.anchor { border-color: rgb(100 141 190 / 18%); background: transparent !important; }
-main > section.anchor > div { position: relative; }
-main > section.anchor:nth-of-type(odd) > div::before {
+main > section.anchor > div:not(.pointer-events-none) { position: relative; }
+main > section.anchor:nth-of-type(odd) > div:not(.pointer-events-none)::before {
   position: absolute; top: 0; left: 1.25rem; right: 1.25rem; height: 1px;
   background: linear-gradient(90deg, transparent, rgb(84 231 255 / 18%), transparent); content: "";
 }

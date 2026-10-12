@@ -21,14 +21,14 @@ export function Cv() {
           lede="Two pages: profile, skills, internships, projects, education, and the ICAISM paper. It is the file behind this site."
         />
 
-        <div className="border border-line bg-paper p-6 md:p-8">
+        <div className="min-w-0 border border-line bg-paper p-5 sm:p-6 md:p-8">
           <div className="flex items-start justify-between gap-4 border-b border-line pb-5">
             <div>
               <p className="text-xs font-medium uppercase tracking-widest text-muted">File</p>
-              <p className="mt-2 font-serif text-2xl text-ink">Hridul M Anilkumar</p>
+              <p className="mt-2 break-words font-serif text-xl text-ink sm:text-2xl">Hridul M Anilkumar</p>
               <p className="mt-1 text-sm text-muted">PDF · 2 pages · 128 KB</p>
             </div>
-            <p className="font-serif text-4xl leading-none text-ink/20" aria-hidden="true">
+            <p className="shrink-0 font-serif text-4xl leading-none text-ink/20" aria-hidden="true">
               CV
             </p>
           </div>
@@ -40,7 +40,7 @@ export function Cv() {
                 className="flex gap-4 border-b border-line py-3 last:border-b-0"
               >
                 <span className="w-6 shrink-0 text-sm text-accent">0{index + 1}</span>
-                <span>
+                <span className="min-w-0 break-words">
                   <span className="block text-ink">{item.label}</span>
                   <span className="mt-0.5 block text-sm text-muted">{item.detail}</span>
                 </span>

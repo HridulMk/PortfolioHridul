@@ -31,7 +31,7 @@ export function About() {
             <h3 className="mt-10 text-xs font-medium uppercase tracking-widest text-muted">
               Languages
             </h3>
-            <p className="mt-3 font-serif text-2xl text-ink">{languages.join("  ·  ")}</p>
+            <p className="mt-3 font-serif text-xl leading-relaxed text-ink sm:text-2xl">{languages.join("  ·  ")}</p>
 
             <h3 className="mt-10 text-xs font-medium uppercase tracking-widest text-muted">
               Also on the desk
@@ -51,7 +51,7 @@ export function About() {
               {experience.map((job) => (
                 <li key={job.role + job.dates} className="border-t border-line py-6">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <p className="font-serif text-2xl text-ink">{job.role}</p>
+                    <p className="min-w-0 font-serif text-xl text-ink sm:text-2xl">{job.role}</p>
                     <p className="text-sm text-muted">{job.dates}</p>
                   </div>
                   <p className="mt-1 text-sm text-accent">
