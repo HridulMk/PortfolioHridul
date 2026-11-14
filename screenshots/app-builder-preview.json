@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Hridul M Anilkumar",
+      "hasCanvas": false,
+      "bodyTextLen": 5175,
+      "bodyTextHash": "4b30d0be68ec54d57bc40860801f373fbd69532e03fe43a260a473b92b1473c4",
+      "bodyTextPrefix": "Skip to content Hridul M Anilkumar About Work Skills CV Contact ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Hridul M Anilkumar",
+      "hasCanvas": false,
+      "bodyTextLen": 5167,
+      "bodyTextHash": "477fdbfc5d83efb5357ef4bd42ce120751f4b9a121719ce019b8325b83d59c5a",
+      "bodyTextPrefix": "Skip to content Hridul Open menu About Work Skills CV Contact FO",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
