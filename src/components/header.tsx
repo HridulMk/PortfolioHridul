@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { emailDraftHref, profile } from "@/data/portfolio";
 
 const links = [
   { href: "#about", id: "about", label: "About" },
   { href: "#work", id: "work", label: "Work" },
+  { href: "#case-studies", id: "case-studies", label: "Case Studies" },
   { href: "#skills", id: "skills", label: "Skills" },
   { href: "#cv", id: "cv", label: "CV" },
   { href: "#contact", id: "contact", label: "Contact" },
@@ -48,20 +50,20 @@ export function Header() {
     <header className="sticky top-0 z-30 border-b border-line/80 bg-paper/85 backdrop-blur-xl">
       <div className="h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
       <div className="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-6 md:px-8">
-        <a href="#top" className="group inline-flex items-center gap-2 font-semibold tracking-tight text-ink">
+        <Link to="/" hash="top" className="group inline-flex items-center gap-2 font-semibold tracking-tight text-ink">
           <img
             src="/Hridul.jpeg"
             alt="Hridul M Anilkumar"
             className="size-9 rounded-lg border border-accent/40 object-cover shadow-lg shadow-cyan-950/30 transition-opacity group-hover:opacity-95"
           />
           <span><span className="block text-sm leading-tight">{profile.name}</span><span className="hidden text-[10px] font-normal uppercase tracking-[0.18em] text-muted sm:block">AI & Full-stack Developer</span></span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
           {links.map((link) => (
-            <a key={link.id} href={link.href} aria-current={active === link.id ? "location" : undefined} className={`inline-flex h-10 items-center rounded-lg px-3 text-sm transition-colors hover:text-accent ${active === link.id ? "bg-accent/10 text-accent" : "text-muted"}`}>
+            <Link key={link.id} to="/" hash={link.id} aria-current={active === link.id ? "location" : undefined} className={`inline-flex h-10 items-center rounded-lg px-3 text-sm transition-colors hover:text-accent ${active === link.id ? "bg-accent/10 text-accent" : "text-muted"}`}>
               {link.label}
-            </a>
+            </Link>
           ))}
           <a href={emailDraftHref()} target="_blank" rel="noopener noreferrer" className="press ml-2 inline-flex h-10 items-center justify-center rounded-lg bg-accent px-4 text-sm font-semibold text-slate-950 hover:bg-cyan-200">Let’s talk</a>
         </nav>
@@ -76,9 +78,9 @@ export function Header() {
         <div className="drawer-inner">
           <nav className="flex flex-col border-t border-line px-5 py-2 sm:px-6" aria-label="Mobile navigation">
             {links.map((link) => (
-              <a key={link.id} href={link.href} aria-current={active === link.id ? "location" : undefined} className="inline-flex min-h-12 items-center border-b border-line/70 text-base text-ink transition-colors hover:text-accent last:border-b-0" onClick={() => setOpen(false)}>
+              <Link key={link.id} to="/" hash={link.id} aria-current={active === link.id ? "location" : undefined} className="inline-flex min-h-12 items-center border-b border-line/70 text-base text-ink transition-colors hover:text-accent last:border-b-0" onClick={() => setOpen(false)}>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

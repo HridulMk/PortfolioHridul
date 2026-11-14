@@ -7,6 +7,15 @@ const facts = [
   { label: "Base", value: "Kerala, India" },
 ];
 
+const services = [
+  "Web Development",
+  "UI/UX Design",
+  "CRM Systems",
+  "AI Integrations",
+  "Chatbots",
+  "Mobile Apps",
+];
+
 export function Hero() {
   return (
     <section id="top" className="anchor relative overflow-hidden">
@@ -26,9 +35,22 @@ export function Hero() {
               <span className="block">Hridul</span>
               <span className="block italic text-accent">M Anilkumar</span>
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink sm:text-xl">
-              Available for freelance projects and full-time or part-time roles. I create modern, interactive websites and UI/UX for businesses, CRM systems, and travel and tourism, as well as AI integrations, chatbots, and mobile applications.
+            {/* <h2 className="mt-7 max-w-2xl text-2xl font-semibold leading-tight text-ink sm:text-3xl">
+              Creating. Innovating. Building what matters.
+            </h2> */}
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
+              From beautiful websites to intelligent applications, I transform ideas into meaningful digital experiences.
             </p>
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label="Services">
+              {services.map((service) => (
+                <li
+                  key={service}
+                  className="rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-muted"
+                >
+                  {service}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="rounded-2xl border border-line bg-paper-deep/80 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-6">

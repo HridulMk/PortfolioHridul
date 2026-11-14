@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { About } from "@/components/about";
+import { CaseStudies } from "@/components/case-studies";
 import { Contact } from "@/components/contact";
 import { Cv } from "@/components/cv";
 import { Footer } from "@/components/footer";
@@ -26,6 +27,7 @@ function Home() {
         <Hero />
         <About />
         <Work />
+        <CaseStudies />
         <Skills />
         <Cv />
         <Contact />

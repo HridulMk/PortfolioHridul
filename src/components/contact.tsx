@@ -56,7 +56,7 @@ export function Contact() {
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div>
           <SectionHeading
-            index="05"
+            index="06"
             label="Contact"
             title="Let's build something together."
             lede="I'm open to freelance work and full-time or part-time roles. Reach out about modern interactive websites, CRM systems, travel and tourism sites, AI integrations, chatbots, or mobile apps."

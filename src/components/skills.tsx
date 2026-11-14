@@ -6,7 +6,7 @@ export function Skills() {
     <section id="skills" className="anchor border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
-          index="03"
+          index="04"
           label="Skills"
           title="Tools I actually ship with."
           lede="A working set, not a keyword cloud — from model training through the API and the screen in front of it."

@@ -1,4 +1,5 @@
 import { ArrowUpRight, Mail } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { emailDraftHref, languages, profile } from "@/data/portfolio";
 
 const columns = [
@@ -7,6 +8,7 @@ const columns = [
     links: [
       { label: "About", href: "#about" },
       { label: "Work", href: "#work" },
+      { label: "Case Studies", href: "#case-studies" },
       { label: "Skills", href: "#skills" },
       { label: "CV", href: "#cv" },
       { label: "Contact", href: "#contact" },
@@ -57,18 +59,28 @@ export function Footer() {
               <ul className="mt-3 space-y-1">
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="rule-link inline-flex min-h-10 items-center gap-1 text-sm text-ink/80"
-                      {...("external" in link && link.external
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                    >
-                      {link.label}
-                      {"external" in link && link.external ? (
-                        <ArrowUpRight className="size-4" aria-hidden="true" />
-                      ) : null}
-                    </a>
+                    {link.href.startsWith("#") ? (
+                      <Link
+                        to="/"
+                        hash={link.href.slice(1)}
+                        className="rule-link inline-flex min-h-10 items-center gap-1 text-sm text-ink/80"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="rule-link inline-flex min-h-10 items-center gap-1 text-sm text-ink/80"
+                        {...("external" in link && link.external
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {link.label}
+                        {"external" in link && link.external ? (
+                          <ArrowUpRight className="size-4" aria-hidden="true" />
+                        ) : null}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -78,10 +90,10 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-2 border-t border-line pt-5 text-xs text-muted sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
-          <a href="#top" className="rule-link inline-flex min-h-10 items-center text-sm text-ink">
+          <Link to="/" hash="top" className="rule-link inline-flex min-h-10 items-center text-sm text-ink">
             Back to top
             <ArrowUpRight className="ml-1 size-4 -rotate-45" aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

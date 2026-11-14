@@ -16,7 +16,7 @@ export function Cv() {
     <section id="cv" className="anchor border-t border-line bg-paper-deep">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end">
         <SectionHeading
-          index="04"
+          index="05"
           label="CV"
           title="The same record, as a PDF."
           lede="Two pages: profile, skills, internships, projects, education, and the ICAISM paper. It is the file behind this site."
