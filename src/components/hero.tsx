@@ -33,11 +33,17 @@ export function Hero() {
 
           <div className="rounded-2xl border border-line bg-paper-deep/80 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-6">
             <div className="mb-5 flex items-center gap-4">
-              <img
-                src="/Hridul.jpeg"
-                alt="Portrait of Hridul M Anilkumar"
-                className="size-20 rounded-full border border-accent/50 object-cover shadow-lg shadow-cyan-950/30"
-              />
+              <div className="relative shrink-0">
+                <img
+                  src="/Hridul.jpeg"
+                  alt="Portrait of Hridul M Anilkumar"
+                  className="size-20 rounded-full border border-accent/50 object-cover shadow-lg shadow-cyan-950/30"
+                />
+                <span className="absolute bottom-1 right-1 flex size-4 items-center justify-center" role="img" aria-label="Live">
+                  <span className="absolute size-full animate-ping rounded-full bg-green-400/70 motion-reduce:animate-none" />
+                  <span className="relative size-2.5 rounded-full border border-paper-deep bg-green-400" />
+                </span>
+              </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Currently open to</p>
                 <p className="mt-2 text-xl font-medium text-ink">{profile.role}</p>
