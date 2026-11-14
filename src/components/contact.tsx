@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Mail, MessageCircle } from "lucide-react";
 import { z } from "zod";
 import { profile } from "@/data/portfolio";
 import { SectionHeading } from "@/components/section-heading";
@@ -58,9 +59,27 @@ export function Contact() {
           <SectionHeading
             index="05"
             label="Contact"
-            title="Write a note."
-            lede="The form opens your email app with the message addressed to me. Nothing is stored on this page."
+            title="Let's build something together."
+            lede="I'm open to freelance work and full-time or part-time roles. Reach out about modern interactive websites, CRM systems, travel and tourism sites, AI integrations, chatbots, or mobile apps."
           />
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={`mailto:${profile.email}`}
+              className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-200"
+            >
+              <Mail className="size-4" aria-hidden="true" />
+              Email me
+            </a>
+            <a
+              href={profile.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line bg-white/5 px-5 py-3 text-sm text-ink hover:border-accent/60 hover:bg-accent/5"
+            >
+              <MessageCircle className="size-4" aria-hidden="true" />
+              WhatsApp me
+            </a>
+          </div>
           <dl className="mt-10 space-y-4 text-sm">
             <div>
               <dt className="text-xs uppercase tracking-widest text-muted">Email</dt>

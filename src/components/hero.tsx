@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 const facts = [
@@ -27,7 +27,7 @@ export function Hero() {
               <span className="block italic text-accent">M Anilkumar</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink sm:text-xl">
-              I build thoughtful software at the intersection of AI, computer vision, and full-stack engineering.
+              Available for freelance projects and full-time or part-time roles. I create modern, interactive websites and UI/UX for businesses, CRM systems, and travel and tourism, as well as AI integrations, chatbots, and mobile applications.
             </p>
           </div>
 
@@ -44,7 +44,7 @@ export function Hero() {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-muted">
-              MCA graduate specializing in AI & machine learning, with hands-on experience building APIs, interfaces, and data-driven applications.
+              MCA graduate specializing in AI & machine learning, ready to help bring your next digital product to life.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {["Python", "React", "Next.js", "Django", "Computer Vision"].map((skill) => (
@@ -67,8 +67,11 @@ export function Hero() {
           <a href="#work" className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-950/30 hover:bg-cyan-200">
             Explore projects <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
-          <a href={`mailto:${profile.email}`} className="press inline-flex min-h-12 items-center justify-center rounded-xl border border-line bg-white/5 px-5 py-3 text-sm text-ink hover:border-accent/60 hover:bg-accent/5">
-            Contact me
+          <a href={`mailto:${profile.email}`} className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line bg-white/5 px-5 py-3 text-sm text-ink hover:border-accent/60 hover:bg-accent/5">
+            <Mail className="size-4" aria-hidden="true" /> Email me
+          </a>
+          <a href={profile.whatsappHref} target="_blank" rel="noopener noreferrer" className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line bg-white/5 px-5 py-3 text-sm text-ink hover:border-accent/60 hover:bg-accent/5">
+            <MessageCircle className="size-4" aria-hidden="true" /> WhatsApp me
           </a>
           <a href={profile.github} target="_blank" rel="noopener noreferrer" className="rule-link inline-flex min-h-12 items-center justify-center gap-1 text-sm text-ink">
             GitHub <ArrowUpRight className="size-4" aria-hidden="true" />

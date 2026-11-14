@@ -5,6 +5,7 @@ export const profile = {
   email: "hridul54@gmail.com",
   phone: "+91 8289864099",
   phoneHref: "tel:+918289864099",
+  whatsappHref: `https://wa.me/918289864099?text=${encodeURIComponent("Hi Hridul, I found your portfolio and would like to discuss a project or job opportunity.")}`,
   linkedin: "https://www.linkedin.com/in/hridulmk",
   github: "https://github.com/HridulMk",
   role: "AI & full-stack developer",
