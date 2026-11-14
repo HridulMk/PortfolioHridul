@@ -32,9 +32,18 @@ export function Hero() {
           </div>
 
           <div className="rounded-2xl border border-line bg-paper-deep/80 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm sm:p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Currently open to</p>
-            <p className="mt-3 text-xl font-medium text-ink">{profile.role}</p>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <div className="mb-5 flex items-center gap-4">
+              <img
+                src="/Hridul.jpeg"
+                alt="Portrait of Hridul M Anilkumar"
+                className="size-20 rounded-full border border-accent/50 object-cover shadow-lg shadow-cyan-950/30"
+              />
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Currently open to</p>
+                <p className="mt-2 text-xl font-medium text-ink">{profile.role}</p>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed text-muted">
               MCA graduate specializing in AI & machine learning, with hands-on experience building APIs, interfaces, and data-driven applications.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">

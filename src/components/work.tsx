@@ -35,12 +35,19 @@ export function Work() {
         </div>
 
         <ul key={filter} className="shelf-enter mt-5 grid min-w-0 gap-4 sm:grid-cols-2">
-          {visible.map((project) => (
-            <li key={project.id} className="min-w-0">
-              <article tabIndex={0} className="project-card group h-full outline-none">
+          {visible.map((project) => {
+            const content = (
+              <>
                 <div className="flex items-start justify-between gap-4">
                   <span className="grid size-12 place-items-center rounded-xl border border-accent/25 bg-accent/[0.06] font-mono text-sm text-accent">{project.index}</span>
-                  <span className="min-w-0 text-right text-xs uppercase tracking-[0.14em] text-muted">{project.categories.join(" / ")}</span>
+                  <span className="flex flex-col items-end gap-2 text-right">
+                    <span className="min-w-0 text-xs uppercase tracking-[0.14em] text-muted">{project.categories.join(" / ")}</span>
+                    {project.website ? (
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/5 px-2.5 py-1 text-[11px] font-medium normal-case tracking-normal text-accent">
+                        Live demo <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                      </span>
+                    ) : null}
+                  </span>
                 </div>
                 <div>
                   <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">{project.kicker}</p>
@@ -51,11 +58,29 @@ export function Work() {
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech) => <span key={tech} className="rounded-md border border-line bg-black/10 px-2.5 py-1 text-xs text-muted">{tech}</span>)}
                   </div>
-                  <ArrowUpRight className="size-5 shrink-0 text-accent transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
+                  {project.website ? <ArrowUpRight className="size-5 shrink-0 text-accent transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" /> : null}
                 </div>
-              </article>
-            </li>
-          ))}
+              </>
+            );
+
+            return (
+              <li key={project.id} className="min-w-0">
+                {project.website ? (
+                  <a
+                    href={project.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card group h-full outline-none"
+                    aria-label={`${project.title} — open live demo in a new tab`}
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <article className="project-card h-full">{content}</article>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>

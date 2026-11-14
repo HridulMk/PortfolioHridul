@@ -8,7 +8,8 @@ const contents = [
   { label: "Education & research", detail: "MCA 8.35 · ICAISM paper, April 2025" },
 ];
 
-const href = "/Hridul-M-Anilkumar-CV.pdf";
+const href = "/HRIDUL_M_ANILKUMAR%20ai.pdf";
+const downloadName = "Hridul_M_Anilkumar ai.pdf";
 
 export function Cv() {
   return (
@@ -51,7 +52,7 @@ export function Cv() {
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <a
               href={href}
-              download="Hridul-M-Anilkumar-CV.pdf"
+              download={downloadName}
               className="press inline-flex h-12 items-center justify-center gap-2 bg-ink px-5 text-sm text-paper hover:bg-accent"
             >
               <Download className="size-4" aria-hidden="true" />

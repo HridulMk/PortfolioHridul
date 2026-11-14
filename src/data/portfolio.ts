@@ -10,7 +10,7 @@ export const profile = {
   role: "AI & full-stack developer",
 };
 
-export const categories = ["All", "Full-stack", "AI / ML", "Computer vision", "Research"] as const;
+export const categories = ["All", "Full-stack", "AI / ML", "Computer vision", "Research","Ai API"] as const;
 
 export type Category = (typeof categories)[number];
 
@@ -22,12 +22,35 @@ export type Project = {
   categories: Exclude<Category, "All">[];
   stack: string[];
   summary: string;
+  website?: string;
 };
 
 export const projects: Project[] = [
   {
-    id: "oction",
+    id: "knowbase-ai",
     index: "01",
+    title: "KnowBase AI",
+    kicker: "AI document Q&A assistant",
+    categories: ["AI / ML", "Full-stack"],
+    stack: ["React", "FastAPI", "RAG", "OpenAI", "PDF parsing"],
+    summary:
+      "Upload PDFs or documents and chat with an AI assistant that answers questions from the content. Built for document-grounded research, knowledge retrieval, and instant lookup across large source material.",
+    website: "https://agent-6adb479e5057ef3471e78dcf--knowbase-ai-i4ee.netlify.app/",
+  },
+  {
+    id: "chief-minister-public-service-portal",
+    index: "02",
+    title: "Chief Minister's Public Service Portal",
+    kicker: "Public grievance reporting platform",
+    categories: ["Ai API", "Full-stack"],
+    stack: ["Next.js", "Supabase", "Auth", "Public forms"],
+    summary:
+      "A public-facing grievance portal where citizens can report issues directly to the Chief Minister’s office, track submissions, and route concerns to the appropriate service workflow.",
+    website: "https://cm-kerala.vercel.app/",
+  },
+  {
+    id: "oction",
+    index: "03",
     title: "Oction Mart",
     kicker: "Real-time auction platform",
     categories: ["Full-stack"],
@@ -37,7 +60,7 @@ export const projects: Project[] = [
   },
   {
     id: "parkai",
-    index: "02",
+    index: "04",
     title: "ParkAI",
     kicker: "Smart parking & space sharing",
     categories: ["Computer vision", "Full-stack"],
@@ -47,7 +70,7 @@ export const projects: Project[] = [
   },
   {
     id: "dropout",
-    index: "03",
+    index: "05",
     title: "Dropout risk",
     kicker: "Student intervention system",
     categories: ["AI / ML"],
@@ -57,7 +80,7 @@ export const projects: Project[] = [
   },
   {
     id: "storefront",
-    index: "04",
+    index: "06",
     title: "Storefront",
     kicker: "E-commerce application",
     categories: ["Full-stack"],
@@ -67,7 +90,7 @@ export const projects: Project[] = [
   },
   {
     id: "pqc",
-    index: "05",
+    index: "07",
     title: "Post-quantum IoT",
     kicker: "Research paper · ICAISM, April 2025",
     categories: ["Research"],

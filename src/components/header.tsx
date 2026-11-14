@@ -49,7 +49,11 @@ export function Header() {
       <div className="h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
       <div className="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-6 md:px-8">
         <a href="#top" className="group inline-flex items-center gap-2 font-semibold tracking-tight text-ink">
-          <span className="grid size-9 place-items-center rounded-lg border border-accent/40 bg-accent/10 text-sm text-accent transition-colors group-hover:bg-accent/20">H.</span>
+          <img
+            src="/Hridul.jpeg"
+            alt="Hridul M Anilkumar"
+            className="size-9 rounded-lg border border-accent/40 object-cover shadow-lg shadow-cyan-950/30 transition-opacity group-hover:opacity-95"
+          />
           <span><span className="block text-sm leading-tight">{profile.name}</span><span className="hidden text-[10px] font-normal uppercase tracking-[0.18em] text-muted sm:block">AI & Full-stack Developer</span></span>
         </a>
 
