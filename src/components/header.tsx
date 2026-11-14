@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { profile } from "@/data/portfolio";
+import { emailDraftHref, profile } from "@/data/portfolio";
 
 const links = [
   { href: "#about", id: "about", label: "About" },
@@ -63,7 +63,7 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <a href="#contact" className="press ml-2 inline-flex h-10 items-center justify-center rounded-lg bg-accent px-4 text-sm font-semibold text-slate-950 hover:bg-cyan-200">Let’s talk</a>
+          <a href={emailDraftHref()} target="_blank" rel="noopener noreferrer" className="press ml-2 inline-flex h-10 items-center justify-center rounded-lg bg-accent px-4 text-sm font-semibold text-slate-950 hover:bg-cyan-200">Let’s talk</a>
         </nav>
 
         <button type="button" className="press relative grid size-11 shrink-0 place-items-center rounded-xl border border-line bg-white/5 text-ink hover:border-accent/60 md:hidden" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen((value) => !value)}>

@@ -1,3 +1,5 @@
+const whatsappNumber = "918289864099";
+
 export const profile = {
   name: "Hridul M Anilkumar",
   short: "Hridul",
@@ -5,11 +7,29 @@ export const profile = {
   email: "hridul54@gmail.com",
   phone: "+91 8289864099",
   phoneHref: "tel:+918289864099",
-  whatsappHref: `https://wa.me/918289864099?text=${encodeURIComponent("Hi Hridul, I found your portfolio and would like to discuss a project or job opportunity.")}`,
+  whatsappHref: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Hridul, I found your portfolio and would like to discuss a project or job opportunity.")}`,
   linkedin: "https://www.linkedin.com/in/hridulmk",
   github: "https://github.com/HridulMk",
   role: "AI & full-stack developer",
 };
+
+export function whatsappDraftHref(message: string) {
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
+export function emailDraftHref(
+  subject = "Project inquiry from your portfolio",
+  body = "Hi Hridul,\n\nI found your portfolio and would like to discuss a project or job opportunity.\n\nProject or role:\nA few details:\n\nBest,\n[Your name]",
+) {
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: profile.email,
+    su: subject,
+    body,
+  });
+  return `https://mail.google.com/mail/?${params.toString()}`;
+}
 
 export const categories = ["All", "Full-stack", "AI / ML", "Computer vision", "Research","Ai API"] as const;
 

@@ -1,5 +1,5 @@
 import { ArrowUpRight, Mail } from "lucide-react";
-import { languages, profile } from "@/data/portfolio";
+import { emailDraftHref, languages, profile } from "@/data/portfolio";
 
 const columns = [
   {
@@ -41,7 +41,9 @@ export function Footer() {
               Full-stack software and machine learning, from Kerala. {languages.join(" · ")}.
             </p>
             <a
-              href={`mailto:${profile.email}`}
+              href={emailDraftHref()}
+              target="_blank"
+              rel="noopener noreferrer"
               className="press mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-4 text-sm font-medium text-accent hover:border-accent/60 hover:bg-accent/15"
             >
               <Mail className="size-4" aria-hidden="true" />

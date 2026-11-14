@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Mail, MessageCircle } from "lucide-react";
 import { z } from "zod";
-import { profile } from "@/data/portfolio";
+import { emailDraftHref, profile, whatsappDraftHref } from "@/data/portfolio";
 import { SectionHeading } from "@/components/section-heading";
 
 const schema = z.object({
@@ -13,10 +13,9 @@ const schema = z.object({
 
 type Fields = z.infer<typeof schema>;
 
-function mailtoHref(data: Fields) {
-  const subject = `Portfolio — ${data.topic}`;
-  const body = `${data.message}\n\n— ${data.name}\n${data.email}`;
-  return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+function whatsappHref(data: Fields) {
+  const message = `Hi Hridul,\n\n${data.message}\n\nSubject: ${data.topic}\nFrom: ${data.name}\nEmail: ${data.email}`;
+  return whatsappDraftHref(message);
 }
 
 export function Contact() {
@@ -46,7 +45,7 @@ export function Contact() {
       setReady(null);
       return;
     }
-    const href = mailtoHref(parsed.data);
+    const href = whatsappHref(parsed.data);
     setErrors({});
     setReady({ href, topic: parsed.data.topic });
     window.location.href = href;
@@ -64,7 +63,9 @@ export function Contact() {
           />
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href={`mailto:${profile.email}`}
+              href={emailDraftHref()}
+              target="_blank"
+              rel="noopener noreferrer"
               className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-200"
             >
               <Mail className="size-4" aria-hidden="true" />
@@ -106,18 +107,18 @@ export function Contact() {
 
         {ready ? (
           <div role="status" className="border border-line bg-paper p-6 md:p-8">
-            <p className="text-xs font-medium uppercase tracking-widest text-accent">Ready to send</p>
-            <h3 className="mt-3 font-serif text-3xl text-ink">Your note is addressed.</h3>
+            <p className="text-xs font-medium uppercase tracking-widest text-accent">Opening WhatsApp</p>
+            <h3 className="mt-3 font-serif text-3xl text-ink">Your message is ready.</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              Subject: {ready.topic}. If a mail app did not open, use the link — it goes to{" "}
-              {profile.email}.
+              Subject: {ready.topic}. If WhatsApp did not open, use the link below to continue the
+              conversation.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 href={ready.href}
                 className="press inline-flex h-12 items-center justify-center bg-ink px-5 text-sm text-paper hover:bg-accent"
               >
-                Open mail app
+                Open WhatsApp
               </a>
               <button
                 type="button"
@@ -168,7 +169,8 @@ export function Contact() {
               type="submit"
               className="press mt-8 inline-flex h-12 items-center justify-center bg-ink px-5 text-sm text-paper hover:bg-accent"
             >
-              Send message
+              <MessageCircle className="mr-2 size-4" aria-hidden="true" />
+              Send via WhatsApp
             </button>
           </form>
         )}

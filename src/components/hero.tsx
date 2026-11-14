@@ -1,5 +1,5 @@
 import { ArrowUpRight, Mail, MessageCircle, Sparkles } from "lucide-react";
-import { profile } from "@/data/portfolio";
+import { emailDraftHref, profile } from "@/data/portfolio";
 
 const facts = [
   { label: "Focus", value: "AI · Full-stack" },
@@ -67,7 +67,7 @@ export function Hero() {
           <a href="#work" className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-950/30 hover:bg-cyan-200">
             Explore projects <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
-          <a href={`mailto:${profile.email}`} className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line bg-white/5 px-5 py-3 text-sm text-ink hover:border-accent/60 hover:bg-accent/5">
+          <a href={emailDraftHref()} target="_blank" rel="noopener noreferrer" className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line bg-white/5 px-5 py-3 text-sm text-ink hover:border-accent/60 hover:bg-accent/5">
             <Mail className="size-4" aria-hidden="true" /> Email me
           </a>
           <a href={profile.whatsappHref} target="_blank" rel="noopener noreferrer" className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line bg-white/5 px-5 py-3 text-sm text-ink hover:border-accent/60 hover:bg-accent/5">
