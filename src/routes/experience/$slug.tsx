@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -54,6 +54,20 @@ function ExperiencePage() {
             </p>
             <h1 className="mt-5 font-serif text-display leading-[0.95] text-ink">{job.role}</h1>
             <p className="mt-5 text-lg text-accent/90">{job.org}</p>
+            {job.projectUrl ? (
+              <section className="mt-8 rounded-2xl border border-line bg-paper-deep/75 p-6 sm:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Project resources</p>
+                <a
+                  href={job.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg bg-accent px-4 text-sm font-semibold text-slate-950 hover:bg-cyan-200"
+                >
+                  View project folder
+                  <ArrowUpRight className="size-4" aria-hidden="true" />
+                </a>
+              </section>
+            ) : null}
             {job.teamSize || job.focusAreas || job.tools ? (
               <section className="mt-10 grid gap-4 sm:grid-cols-2">
                 {job.teamSize ? (

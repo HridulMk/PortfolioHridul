@@ -130,6 +130,7 @@ export type Experience = {
   place: string;
   dates: string;
   points: string[];
+  projectUrl?: string;
   teamSize?: string;
   focusAreas?: string[];
   tools?: string[];
@@ -142,6 +143,7 @@ export const experience: Experience[] = [
     org: "Adz4Needz",
     place: "Remote",
     dates: "Jun 2026 – Aug 2026",
+    projectUrl: "https://drive.google.com/drive/folders/1EJrvV5LFJEsEfMLsDUao6En9NXFX3k_L?usp=sharing",
     teamSize: "6–10 team members",
     focusAreas: ["SEO", "AEO", "GEO", "Instagram performance analysis", "Content creation"],
     tools: [
