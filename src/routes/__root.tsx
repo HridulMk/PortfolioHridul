@@ -3,9 +3,9 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Hridul M Anilkumar | AI & Full-Stack Developer";
+const APP_NAME = "Hridul M Anilkumar | Digital Marketer & Designer";
 const DESCRIPTION =
-  "Portfolio of Hridul M Anilkumar, an MCA graduate specializing in AI and machine learning. Explore full-stack applications, computer vision, and practical AI projects built with Python, React, Next.js, and Django.";
+  "Portfolio of Hridul M Anilkumar, a digital marketer and designer blending thoughtful design, data-informed marketing, and a strong foundation in technology.";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -18,7 +18,7 @@ export const Route = createRootRoute({
       { name: "color-scheme", content: "dark" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
       { name: "author", content: "Hridul M Anilkumar" },
-      { name: "keywords", content: "Hridul M Anilkumar, AI engineer, full-stack developer, machine learning, computer vision, React, Next.js, Python, Django, portfolio" },
+      { name: "keywords", content: "Hridul M Anilkumar, digital marketer, designer, digital marketing, UI/UX design, portfolio" },
       { property: "og:type", content: "website" },
       { property: "og:title", content: APP_NAME },
       { property: "og:description", content: DESCRIPTION },

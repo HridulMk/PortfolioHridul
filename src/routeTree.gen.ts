@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies/$slug'
+import { Route as ExperienceSlugRouteImport } from './routes/experience/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
   path: '/case-studies/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperienceSlugRoute = ExperienceSlugRouteImport.update({
+  id: '/experience/$slug',
+  path: '/experience/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/experience/$slug': typeof ExperienceSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/experience/$slug': typeof ExperienceSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/experience/$slug': typeof ExperienceSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/case-studies/$slug'
+  fullPaths: '/' | '/case-studies/$slug' | '/experience/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/case-studies/$slug'
-  id: '__root__' | '/' | '/case-studies/$slug'
+  to: '/' | '/case-studies/$slug' | '/experience/$slug'
+  id: '__root__' | '/' | '/case-studies/$slug' | '/experience/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
+  ExperienceSlugRoute: typeof ExperienceSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experience/$slug': {
+      id: '/experience/$slug'
+      path: '/experience/$slug'
+      fullPath: '/experience/$slug'
+      preLoaderRoute: typeof ExperienceSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CaseStudiesSlugRoute: CaseStudiesSlugRoute,
+  ExperienceSlugRoute: ExperienceSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

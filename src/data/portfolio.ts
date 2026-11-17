@@ -10,7 +10,9 @@ export const profile = {
   whatsappHref: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Hridul, I found your portfolio and would like to discuss a project or job opportunity.")}`,
   linkedin: "https://www.linkedin.com/in/hridulmk",
   github: "https://github.com/HridulMk",
-  role: "AI & full-stack developer",
+  role: "AI & Full-Stack Developer",
+
+
 };
 
 export function whatsappDraftHref(message: string) {
@@ -121,19 +123,51 @@ export const projects: Project[] = [
   },
 ];
 
-export const experience = [
+export type Experience = {
+  slug: string;
+  role: string;
+  org: string;
+  place: string;
+  dates: string;
+  points: string[];
+  teamSize?: string;
+  focusAreas?: string[];
+  tools?: string[];
+};
+
+export const experience: Experience[] = [
   {
+    slug: "adz4needz",
     role: "Digital Marketing Intern",
     org: "Adz4Needz",
     place: "Remote",
     dates: "Jun 2026 – Aug 2026",
+    teamSize: "6–10 team members",
+    focusAreas: ["SEO", "AEO", "GEO", "Instagram performance analysis", "Content creation"],
+    tools: [
+      "Screaming Frog",
+      "Meta Business Suite",
+      "Adobe Illustrator",
+      "Canva",
+      "Sketch",
+      "Figma",
+      "Adobe Photoshop",
+      "Adobe Lightroom",
+      "Picsart",
+      "VN Video Editor",
+      "CapCut",
+    ],
     points: [
-      "Coordinated task assignments and daily deliverables so the team stayed on schedule.",
-      "Reviewed social performance data to spot trends and steer content decisions.",
-      "Practiced team leadership, communication, and campaign analysis.",
+      "Coordinated as a team leader for 6–10 members, assigning tasks and tracking daily deliverables to keep campaign work on schedule.",
+      "Worked on SEO, AEO, and GEO to improve discoverability across search engines, answer engines, and generative AI platforms.",
+      "Conducted website SEO audits with Screaming Frog to identify technical and on-page issues.",
+      "Analyzed Instagram performance to understand content reach and engagement and guide future posts.",
+      "Created daily, trend-led social posts designed for shareability and audience reach.",
+      "Organized the content calendar and scheduled social posts using Meta Business Suite.",
     ],
   },
   {
+    slug: "progressive-cybernetics",
     role: "Web Application Developer Intern",
     org: "Progressive Cybernetics Pvt. Ltd.",
     place: "Muvattupuzha, Kerala",
@@ -145,6 +179,7 @@ export const experience = [
     ],
   },
   {
+    slug: "inmakes-infotech",
     role: "Python Full Stack Developer Intern",
     org: "Inmakes Infotech Pvt. Ltd.",
     place: "Kochi, Kerala",

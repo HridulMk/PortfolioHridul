@@ -2,7 +2,7 @@ import { ArrowUpRight, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { emailDraftHref, profile } from "@/data/portfolio";
 
 const facts = [
-  { label: "Focus", value: "AI · Full-stack" },
+  { label: "Focus", value: "Marketing · Design" },
   { label: "CGPA", value: "8.35" },
   { label: "Base", value: "Kerala, India" },
 ];
@@ -29,17 +29,41 @@ export function Hero() {
         <div className="mt-5 grid gap-10 md:mt-8 md:grid-cols-[minmax(0,1.3fr)_minmax(16rem,0.7fr)] md:items-end">
           <div>
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1.5 text-xs font-medium tracking-wide text-accent">
-              <Sparkles className="size-3.5" aria-hidden="true" /> AI · Software · Creative problem-solving
+              <Sparkles className="size-3.5 text-accent" aria-hidden="true" />
+<span>Developer · AI &amp; ML · Designer · Digital Marketing </span>
+
             </p>
             <h1 className="font-serif text-display text-ink">
               <span className="block">Hridul</span>
               <span className="block italic text-accent">M Anilkumar</span>
             </h1>
+            {/* <h2 className="mt-5 text-2xl font-semibold leading-tight text-ink sm:text-3xl">
+              Digital Marketer <span className="text-accent">&</span> Designer
+            </h2> */}
+
+            <div className="mt-5 space-y-2">
+  <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+    Developer <span className="text-accent">&amp;</span> Designer
+  </h2>
+  <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-medium uppercase tracking-wider text-ink/70 sm:text-base">
+    <span>AI &amp; ML</span>
+    <span className="text-accent">/</span>
+    <span>Digital Marketing</span>
+    <span className="text-accent">/</span>
+    <span>Artist</span>
+  </p>
+</div>
+
+            {/* <h2 className="mt-5 text-2xl font-semibold leading-tight text-ink sm:text-3xl">
+  Developer <span className="text-accent">/</span> AI &amp; ML <span className="text-accent">/</span> Designer <span className="text-accent">/</span> Digital Marketing <span className="text-accent">/</span> Artist
+</h2> */}
+
+
             {/* <h2 className="mt-7 max-w-2xl text-2xl font-semibold leading-tight text-ink sm:text-3xl">
               Creating. Innovating. Building what matters.
             </h2> */}
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-              From beautiful websites to intelligent applications, I transform ideas into meaningful digital experiences.
+              Blending code, craft, and strategy to turn ambitious ideas into living, breathing brands.
             </p>
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Services">
               {services.map((service) => (

@@ -1,3 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { education, experience, languages, study } from "@/data/portfolio";
 import { SectionHeading } from "@/components/section-heading";
 
@@ -49,22 +51,33 @@ export function About() {
             <h3 className="text-xs font-medium uppercase tracking-widest text-muted">Experience</h3>
             <ol className="mt-4">
               {experience.map((job) => (
-                <li key={job.role + job.dates} className="border-t border-line py-6">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <p className="min-w-0 font-serif text-xl text-ink sm:text-2xl">{job.role}</p>
-                    <p className="text-sm text-muted">{job.dates}</p>
-                  </div>
-                  <p className="mt-1 text-sm text-accent">
-                    {job.org} · {job.place}
-                  </p>
-                  <ul className="mt-4 space-y-2">
-                    {job.points.map((point) => (
-                      <li key={point} className="flex gap-3 text-sm leading-relaxed text-ink">
-                        <span className="mt-2 size-1 shrink-0 bg-accent" aria-hidden="true" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <li key={job.slug} className="border-t border-line py-6">
+                  <Link
+                    to="/experience/$slug"
+                    params={{ slug: job.slug }}
+                    className="group block rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    aria-label={`View ${job.role} experience at ${job.org}`}
+                  >
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                      <p className="min-w-0 font-serif text-xl text-ink transition-colors group-hover:text-accent sm:text-2xl">{job.role}</p>
+                      <p className="text-sm text-muted">{job.dates}</p>
+                    </div>
+                    <p className="mt-1 text-sm text-accent">
+                      {job.org} · {job.place}
+                    </p>
+                    <ul className="mt-4 space-y-2">
+                      {job.points.map((point) => (
+                        <li key={point} className="flex gap-3 text-sm leading-relaxed text-ink">
+                          <span className="mt-2 size-1 shrink-0 bg-accent" aria-hidden="true" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent">
+                      View experience
+                      <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ol>

@@ -56,7 +56,7 @@ export function Header() {
             alt="Hridul M Anilkumar"
             className="size-9 rounded-lg border border-accent/40 object-cover shadow-lg shadow-cyan-950/30 transition-opacity group-hover:opacity-95"
           />
-          <span><span className="block text-sm leading-tight">{profile.name}</span><span className="hidden text-[10px] font-normal uppercase tracking-[0.18em] text-muted sm:block">AI & Full-stack Developer</span></span>
+          <span><span className="block text-sm leading-tight">{profile.name}</span><span className="hidden text-[10px] font-normal uppercase tracking-[0.18em] text-muted sm:block">Digital Marketer & Designer</span></span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
