@@ -1,21 +1,24 @@
+
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import type { PointerEvent } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { emailDraftHref, profile } from "@/data/portfolio";
 
 const links = [
-  { href: "#about", id: "about", label: "About" },
-  { href: "#work", id: "work", label: "Work" },
-  { href: "#case-studies", id: "case-studies", label: "Case Studies" },
-  { href: "#skills", id: "skills", label: "Skills" },
-  { href: "#cv", id: "cv", label: "CV" },
-  { href: "#contact", id: "contact", label: "Contact" },
+  { id: "about", label: "About" },
+  { id: "work", label: "Work" },
+  { id: "case-studies", label: "Case Studies" },
+  { id: "skills", label: "Skills" },
+  { id: "cv", label: "CV" },
+  { id: "contact", label: "Contact" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
 
+  // Track active section
   useEffect(() => {
     const nodes = links
       .map((link) => document.getElementById(link.id))
@@ -28,60 +31,179 @@ export function Header() {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible?.target.id) setActive(visible.target.id);
+
+        if (visible?.target.id) {
+          setActive(visible.target.id);
+        }
       },
-      { rootMargin: "-42% 0px -48% 0px", threshold: [0, 0.25, 0.6] },
+      {
+        rootMargin: "-42% 0px -48% 0px",
+        threshold: [0, 0.25, 0.6],
+      },
     );
 
     nodes.forEach((node) => observer.observe(node));
+
     return () => observer.disconnect();
   }, []);
 
+  // Close menu with Escape
   useEffect(() => {
     if (!open) return;
+
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
     }
+
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
+  // Cursor-following glow
+  function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== "mouse") return;
+
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    event.currentTarget.style.setProperty(
+      "--mouse-x",
+      `${event.clientX - rect.left}px`,
+    );
+
+    event.currentTarget.style.setProperty(
+      "--mouse-y",
+      `${event.clientY - rect.top}px`,
+    );
+  }
+
   return (
-    <header className="sticky top-0 z-30 border-b border-line/80 bg-paper/85 backdrop-blur-xl">
-      <div className="h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
-      <div className="mx-auto flex min-h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-6 md:px-8">
-        <Link to="/" hash="top" className="group inline-flex items-center gap-2 font-semibold tracking-tight text-ink">
-          <img
-            src="/Hridul.jpeg"
-            alt="Hridul M Anilkumar"
-            className="size-9 rounded-lg border border-accent/40 object-cover shadow-lg shadow-cyan-950/30 transition-opacity group-hover:opacity-95"
-          />
-          <span><span className="block text-sm leading-tight">{profile.name}</span><span className="hidden text-[10px] font-normal uppercase tracking-[0.18em] text-muted sm:block">Digital Marketer & Designer</span></span>
-        </Link>
+    <header className="floating-header">
+      <div
+        className={`nav-glass ${open ? "nav-menu-open" : ""}`}
+        onPointerMove={handlePointerMove}
+      >
+        {/* Cursor-following light */}
+        <div className="nav-glow" aria-hidden="true" />
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
-          {links.map((link) => (
-            <Link key={link.id} to="/" hash={link.id} aria-current={active === link.id ? "location" : undefined} className={`inline-flex h-10 items-center rounded-lg px-3 text-sm transition-colors hover:text-accent ${active === link.id ? "bg-accent/10 text-accent" : "text-muted"}`}>
-              {link.label}
-            </Link>
-          ))}
-          <a href={emailDraftHref()} target="_blank" rel="noopener noreferrer" className="press ml-2 inline-flex h-10 items-center justify-center rounded-lg bg-accent px-4 text-sm font-semibold text-slate-950 hover:bg-cyan-200">Let’s talk</a>
-        </nav>
+        {/* Glass reflections */}
+        <div className="nav-fog" aria-hidden="true" />
 
-        <button type="button" className="press relative grid size-11 shrink-0 place-items-center rounded-xl border border-line bg-white/5 text-ink hover:border-accent/60 md:hidden" aria-label={open ? "Close navigation menu" : "Open navigation menu"} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen((value) => !value)}>
-          <Menu className={`icon-swap size-5 ${open ? "icon-off" : "icon-on"}`} aria-hidden="true" />
-          <X className={`icon-swap absolute size-5 ${open ? "icon-on" : "icon-off"}`} aria-hidden="true" />
-        </button>
-      </div>
+        <div className="nav-content">
+          {/* Brand */}
+          <Link
+            to="/"
+            hash="top"
+            className="brand"
+            onClick={() => setOpen(false)}
+          >
+            <div className="brand-image-wrapper">
+              <img
+                src="/Hridul.jpeg"
+                alt="Hridul M Anilkumar"
+                className="brand-image"
+              />
+            </div>
 
-      <div id="mobile-nav" className={`drawer md:hidden ${open ? "open" : ""}`} inert={open ? undefined : true}>
-        <div className="drawer-inner">
-          <nav className="flex flex-col border-t border-line px-5 py-2 sm:px-6" aria-label="Mobile navigation">
+            <span className="brand-text">
+              <span className="brand-name">{profile.name}</span>
+              <span className="brand-role">
+                Full-Stack &amp; AI Developer
+              </span>
+            </span>
+          </Link>
+
+          {/* Desktop navigation */}
+          <nav className="desktop-nav" aria-label="Main navigation">
             {links.map((link) => (
-              <Link key={link.id} to="/" hash={link.id} aria-current={active === link.id ? "location" : undefined} className="inline-flex min-h-12 items-center border-b border-line/70 text-base text-ink transition-colors hover:text-accent last:border-b-0" onClick={() => setOpen(false)}>
-                {link.label}
+              <Link
+                key={link.id}
+                to="/"
+                hash={link.id}
+                aria-current={
+                  active === link.id ? "location" : undefined
+                }
+                className={`nav-link ${
+                  active === link.id ? "active" : ""
+                }`}
+              >
+                <span>{link.label}</span>
               </Link>
             ))}
+
+            <a
+              href={emailDraftHref()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="talk-button"
+            >
+              <span>Let's talk</span>
+              <ArrowUpRight size={15} />
+            </a>
+          </nav>
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            className={`mobile-toggle ${
+              open ? "mobile-toggle-open" : ""
+            }`}
+            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((value) => !value)}
+          >
+            <Menu
+              className={`menu-icon ${open ? "icon-hidden" : ""}`}
+              size={20}
+              aria-hidden="true"
+            />
+            <X
+              className={`close-icon ${open ? "icon-visible" : ""}`}
+              size={20}
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+
+        {/* Mobile navigation */}
+        <div
+          id="mobile-nav"
+          className={`mobile-nav ${
+            open ? "mobile-nav-open" : ""
+          }`}
+          inert={open ? undefined : true}
+        >
+          <nav
+            className="mobile-nav-inner"
+            aria-label="Mobile navigation"
+          >
+            {links.map((link) => (
+              <Link
+                key={link.id}
+                to="/"
+                hash={link.id}
+                aria-current={
+                  active === link.id ? "location" : undefined
+                }
+                className={`mobile-link ${
+                  active === link.id ? "active" : ""
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                <span>{link.label}</span>
+                <ArrowUpRight size={16} />
+              </Link>
+            ))}
+
+            <a
+              href={emailDraftHref()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-talk"
+            >
+              <span>Let's talk</span>
+              <ArrowUpRight size={16} />
+            </a>
           </nav>
         </div>
       </div>

@@ -1,99 +1,232 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  MoveUpRight,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { emailDraftHref, languages, profile } from "@/data/portfolio";
 
-const columns = [
+const navigation = [
   {
-    title: "Visit",
+    title: "Explore",
     links: [
       { label: "About", href: "#about" },
-      { label: "Work", href: "#work" },
-      { label: "Case Studies", href: "#case-studies" },
-      { label: "Skills", href: "#skills" },
-      { label: "CV", href: "#cv" },
-      { label: "Contact", href: "#contact" },
+      { label: "Selected work", href: "#work" },
+      { label: "Case studies", href: "#case-studies" },
+      { label: "Technical skills", href: "#skills" },
+      { label: "Curriculum vitae", href: "#cv" },
     ],
   },
   {
-    title: "Connect",
+    title: "Elsewhere",
     links: [
-      { label: "GitHub", href: profile.github, external: true },
-      { label: "LinkedIn", href: profile.linkedin, external: true },
-      { label: "Email", href: `mailto:${profile.email}` },
-      { label: "Phone", href: profile.phoneHref },
+      {
+        label: "GitHub",
+        href: profile.github,
+        external: true,
+        icon: Github,
+      },
+      {
+        label: "LinkedIn",
+        href: profile.linkedin,
+        external: true,
+        icon: Linkedin,
+      },
+      {
+        label: "Email",
+        href: `mailto:${profile.email}`,
+        icon: Mail,
+      },
+      {
+        label: "Phone",
+        href: profile.phoneHref,
+        icon: Phone,
+      },
     ],
   },
 ];
 
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-accent/20 text-ink">
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-14 md:px-8 md:py-16">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)_minmax(0,0.9fr)] sm:gap-x-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)_minmax(0,0.9fr)]">
-          <div className="col-span-2 min-w-0 sm:col-span-1">
-            <a href="#top" className="group inline-flex items-center gap-3 rounded-lg text-ink focus-visible:outline-offset-4">
-              <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-accent/35 bg-accent/10 font-serif text-xl text-accent transition-colors group-hover:bg-accent/20">
-                H.
-              </span>
-              <span className="font-serif text-[clamp(1.75rem,7vw,2.5rem)] leading-none tracking-tight">
-                Hridul <span className="italic text-accent">Anilkumar</span>
-              </span>
-            </a>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
-              Full-stack software and machine learning, from Kerala. {languages.join(" · ")}.
-            </p>
+    <footer
+      id="footer"
+      className="relative overflow-hidden border-t border-line bg-paper-deep text-ink"
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+
+        {/* Main closing statement */}
+        <div className="relative border-b border-line py-16 sm:py-20 md:py-28">
+
+          <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-accent">
+            <span className="size-2 rounded-full bg-accent" />
+            Have something in mind?
+          </div>
+
+          <div className="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+            <div>
+              <h2 className="max-w-3xl font-serif text-[clamp(2.8rem,8vw,6rem)] leading-[0.95] tracking-tight text-ink">
+                Let's build
+                <br />
+                something
+                <br />
+                <span className="italic text-accent">meaningful.</span>
+              </h2>
+
+              <p className="mt-7 max-w-md text-sm leading-7 text-muted sm:text-base">
+                From thoughtful digital experiences to intelligent
+                applications, I'm always interested in exploring good
+                ideas and turning them into something real.
+              </p>
+            </div>
+
             <a
               href={emailDraftHref()}
               target="_blank"
               rel="noopener noreferrer"
-              className="press mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-4 text-sm font-medium text-accent hover:border-accent/60 hover:bg-accent/15"
+              className="press group flex size-28 shrink-0 flex-col items-center justify-center gap-2 rounded-full border border-accent bg-accent text-paper transition-all duration-300 hover:scale-105 hover:bg-ink hover:border-ink md:size-36"
+              aria-label="Start a conversation by email"
             >
-              <Mail className="size-4" aria-hidden="true" />
-              Let’s talk
-              <ArrowUpRight className="size-4" aria-hidden="true" />
+              <span className="text-xs font-medium">Say hello</span>
+              <MoveUpRight className="size-6 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
           </div>
-          {columns.map((column) => (
+
+          {/* Decorative typography */}
+          <div
+            className="pointer-events-none absolute bottom-5 right-0 hidden select-none font-serif text-[12rem] leading-none text-ink/[0.025] lg:block"
+            aria-hidden="true"
+          >
+            H.
+          </div>
+        </div>
+
+        {/* Identity and navigation */}
+        <div className="grid gap-12 py-12 sm:grid-cols-2 sm:py-16 lg:grid-cols-[1.5fr_0.7fr_0.8fr] lg:gap-16">
+
+          {/* Personal identity */}
+          <div>
+            <a
+              href="#top"
+              className="group inline-flex items-center gap-3"
+              aria-label="Hridul Anilkumar, back to top"
+            >
+              <span className="grid size-12 place-items-center rounded-xl border border-accent/40 bg-accent/10 font-serif text-2xl text-accent transition-colors group-hover:bg-accent/20">
+                H.
+              </span>
+
+              <span className="font-serif text-2xl tracking-tight">
+                Hridul{" "}
+                <span className="italic text-accent">M Anilkumar</span>
+              </span>
+            </a>
+
+            <p className="mt-5 max-w-sm text-sm leading-7 text-muted">
+              Building across software, AI and design. Interested in
+              the intersection of technology, creativity and practical
+              problem-solving.
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {languages.map((language) => (
+                <span
+                  key={language}
+                  className="rounded-full border border-line px-3 py-1.5 text-xs text-muted"
+                >
+                  {language}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation */}
+          {navigation.map((column) => (
             <nav key={column.title} aria-label={column.title}>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">{column.title}</p>
-              <ul className="mt-3 space-y-1">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    {link.href.startsWith("#") ? (
-                      <Link
-                        to="/"
-                        hash={link.href.slice(1)}
-                        className="rule-link inline-flex min-h-10 items-center gap-1 text-sm text-ink/80"
-                      >
-                        {link.label}
-                      </Link>
-                    ) : (
-                      <a
-                        href={link.href}
-                        className="rule-link inline-flex min-h-10 items-center gap-1 text-sm text-ink/80"
-                        {...("external" in link && link.external
-                          ? { target: "_blank", rel: "noopener noreferrer" }
-                          : {})}
-                      >
-                        {link.label}
-                        {"external" in link && link.external ? (
-                          <ArrowUpRight className="size-4" aria-hidden="true" />
-                        ) : null}
-                      </a>
-                    )}
-                  </li>
-                ))}
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                {column.title}
+              </p>
+
+              <ul className="space-y-3">
+                {column.links.map((item) => {
+                  const Icon = "icon" in item ? item.icon : undefined;
+
+                  return (
+                    <li key={item.label}>
+                      {item.href.startsWith("#") ? (
+                        <Link
+                          to="/"
+                          hash={item.href.slice(1)}
+                          className="group inline-flex min-h-8 items-center gap-2 text-sm text-muted transition-colors hover:text-accent"
+                        >
+                          {item.label}
+                          <ArrowDownRight className="size-3.5 opacity-0 transition-all group-hover:translate-x-1 group-hover:translate-y-1 group-hover:opacity-100" />
+                        </Link>
+                      ) : (
+                        <a
+                          href={item.href}
+                          className="group inline-flex min-h-8 items-center gap-2 text-sm text-muted transition-colors hover:text-accent"
+                          {...("external" in item && item.external
+                            ? {
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                              }
+                            : {})}
+                        >
+                          {Icon && <Icon className="size-4" />}
+                          {item.label}
+
+                          {"external" in item && item.external && (
+                            <ArrowUpRight className="size-3.5 opacity-50 transition-opacity group-hover:opacity-100" />
+                          )}
+                        </a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-line pt-5 text-xs text-muted sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
-          <Link to="/" hash="top" className="rule-link inline-flex min-h-10 items-center text-sm text-ink">
-            Back to top
-            <ArrowUpRight className="ml-1 size-4 -rotate-45" aria-hidden="true" />
-          </Link>
+        {/* Bottom signature */}
+        <div className="flex flex-col gap-5 border-t border-line py-6 sm:flex-row sm:items-center sm:justify-between">
+
+          <p className="text-xs text-muted">
+            © {year} {profile.name}. Made with curiosity and care.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <p className="text-xs text-muted">
+              Based in Kerala, India
+            </p>
+
+            <Link
+              to="/"
+              hash="top"
+              className="group inline-flex items-center gap-2 text-xs font-medium text-ink transition-colors hover:text-accent"
+            >
+              Back to top
+              <span className="grid size-7 place-items-center rounded-full border border-line transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-paper">
+                <ArrowUpRight className="size-3.5 -rotate-45" />
+              </span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Final signature */}
+        <div className="overflow-hidden pb-2">
+          <p
+            className="select-none whitespace-nowrap text-center font-serif text-[clamp(3.5rem,13vw,10rem)] leading-[0.85] tracking-[-0.07em] text-ink/[0.045]"
+            aria-hidden="true"
+          >
+            Hridul M Anilkumar
+          </p>
         </div>
       </div>
     </footer>
