@@ -109,14 +109,14 @@ export function Hero() {
           </div>
         </div>
 
-        <dl className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3">
+        {/* <dl className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3">
           {facts.map((fact) => (
             <div key={fact.label} className="bg-paper-deep px-4 py-4 sm:px-5">
               <dt className="text-xs uppercase tracking-[0.16em] text-muted">{fact.label}</dt>
               <dd className="mt-1 text-lg font-medium text-ink sm:text-xl">{fact.value}</dd>
             </div>
           ))}
-        </dl>
+        </dl> */}
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <a href="#work" className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-950/30 hover:bg-cyan-200">
