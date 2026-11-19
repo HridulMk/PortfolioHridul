@@ -232,7 +232,7 @@ export const skillGroups = [
   },
   {
     label: "APIs & data",
-    items: ["Django REST Framework", "REST", "PostgreSQL", "MySQL", "MongoDB"],
+    items: ["Django REST Framework", "REST", "PostgreSQL", "MySQL", "MongoDB", "RAG"],
   },
   {
     label: "Cloud & systems",

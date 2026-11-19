@@ -14,6 +14,7 @@ const services = [
   "AI Integrations",
   "Chatbots",
   "Mobile Apps",
+  
 ];
 
 export function Hero() {
@@ -43,14 +44,16 @@ export function Hero() {
 
             <div className="mt-5 space-y-2">
   <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-    Developer <span className="text-accent">&amp;</span> Designer
-  </h2>
+  AI <span className="text-accent">Developer</span>
+</h2>
+
   <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-medium uppercase tracking-wider text-ink/70 sm:text-base">
     <span>AI &amp; ML</span>
     <span className="text-accent">/</span>
     <span>Digital Marketing</span>
     <span className="text-accent">/</span>
-    <span>Artist</span>
+    <span>Generative AI</span>
+    
   </p>
 </div>
 
@@ -99,7 +102,7 @@ export function Hero() {
               MCA graduate specializing in AI & machine learning, ready to help bring your next digital product to life.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              {["Python", "React", "Next.js", "Django", "Computer Vision"].map((skill) => (
+              {["Python", "React", "Next.js", "Django", "Computer Vision", "RAG"].map((skill) => (
                 <span key={skill} className="rounded-full border border-line px-3 py-1.5 text-xs text-muted">{skill}</span>
               ))}
             </div>
