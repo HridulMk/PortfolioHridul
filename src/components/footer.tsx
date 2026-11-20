@@ -79,7 +79,7 @@ export function Footer() {
     if (!launching) return;
 
     const timer = window.setTimeout(() => {
-      window.location.href = emailDraftHrefForCurrentDevice(EMAIL_SUBJECT, "");
+      window.location.href = emailDraftHrefForCurrentDevice(EMAIL_SUBJECT);
     }, prefersReducedMotion ? 200 : 1400);
 
     return () => window.clearTimeout(timer);

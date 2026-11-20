@@ -19,16 +19,19 @@ export function whatsappDraftHref(message: string) {
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+const DEFAULT_EMAIL_BODY =
+  "Hi Hridul,\n\nI found your portfolio and would like to discuss a potential project or professional opportunity.\n\nProject or role:\nA few details:\n\nBest,\n[Your name]";
+
 export function emailDraftHref(
   subject = "Project inquiry from your portfolio",
-  body = "Hi Hridul,\n\nI found your portfolio and would like to discuss a project or job opportunity.\n\nProject or role:\nA few details:\n\nBest,\n[Your name]",
+  body = DEFAULT_EMAIL_BODY,
 ) {
   return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 export function emailDraftHrefForCurrentDevice(
   subject = "Project inquiry from your portfolio",
-  body = "Hi Hridul,\n\nI found your portfolio and would like to discuss a project or job opportunity.\n\nProject or role:\nA few details:\n\nBest,\n[Your name]",
+  body = DEFAULT_EMAIL_BODY,
 ) {
   const isMobile =
     /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
