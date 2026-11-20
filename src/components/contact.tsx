@@ -1,7 +1,12 @@
 import { useState, type FormEvent } from "react";
 import { Mail, MessageCircle } from "lucide-react";
 import { z } from "zod";
-import { emailDraftHref, profile, whatsappDraftHref } from "@/data/portfolio";
+import {
+  emailDraftHref,
+  emailDraftHrefForCurrentDevice,
+  profile,
+  whatsappDraftHref,
+} from "@/data/portfolio";
 import { SectionHeading } from "@/components/section-heading";
 
 const schema = z.object({
@@ -64,8 +69,10 @@ export function Contact() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={emailDraftHref()}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={(event) => {
+                event.preventDefault();
+                window.location.href = emailDraftHrefForCurrentDevice();
+              }}
               className="press inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-200"
             >
               <Mail className="size-4" aria-hidden="true" />

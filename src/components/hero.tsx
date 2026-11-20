@@ -19,7 +19,11 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import { emailDraftHref, profile } from "@/data/portfolio";
+import {
+  emailDraftHref,
+  emailDraftHrefForCurrentDevice,
+  profile,
+} from "@/data/portfolio";
 
 
 // Services and expertise
@@ -424,6 +428,10 @@ export function Hero() {
               {/* Email */}
               <a
                 href={emailDraftHref()}
+                onClick={(event) => {
+                  event.preventDefault();
+                  window.location.href = emailDraftHrefForCurrentDevice();
+                }}
                 className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 text-sm font-medium text-white backdrop-blur-md transition-all hover:border-cyan-300/50 hover:text-cyan-200"
               >
                 <Mail className="size-4" />

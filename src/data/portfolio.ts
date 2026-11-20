@@ -23,6 +23,19 @@ export function emailDraftHref(
   subject = "Project inquiry from your portfolio",
   body = "Hi Hridul,\n\nI found your portfolio and would like to discuss a project or job opportunity.\n\nProject or role:\nA few details:\n\nBest,\n[Your name]",
 ) {
+  return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+export function emailDraftHrefForCurrentDevice(
+  subject = "Project inquiry from your portfolio",
+  body = "Hi Hridul,\n\nI found your portfolio and would like to discuss a project or job opportunity.\n\nProject or role:\nA few details:\n\nBest,\n[Your name]",
+) {
+  const isMobile =
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  if (isMobile) return emailDraftHref(subject, body);
+
   const params = new URLSearchParams({
     view: "cm",
     fs: "1",

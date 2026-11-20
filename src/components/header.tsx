@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import type { PointerEvent } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { emailDraftHref, profile } from "@/data/portfolio";
+import {
+  emailDraftHref,
+  emailDraftHrefForCurrentDevice,
+  profile,
+} from "@/data/portfolio";
 
 const links = [
   { id: "about", label: "About" },
@@ -132,8 +136,10 @@ export function Header() {
 
             <a
               href={emailDraftHref()}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={(event) => {
+                event.preventDefault();
+                window.location.href = emailDraftHrefForCurrentDevice();
+              }}
               className="talk-button"
             >
               <span>Let's talk</span>
@@ -197,8 +203,10 @@ export function Header() {
 
             <a
               href={emailDraftHref()}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={(event) => {
+                event.preventDefault();
+                window.location.href = emailDraftHrefForCurrentDevice();
+              }}
               className="mobile-talk"
             >
               <span>Let's talk</span>

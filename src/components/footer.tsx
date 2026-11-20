@@ -18,9 +18,13 @@ import {
 } from "lucide-react";
 
 import { Link } from "@tanstack/react-router";
-import { languages, profile } from "@/data/portfolio";
+import {
+  emailDraftHrefForCurrentDevice,
+  languages,
+  profile,
+} from "@/data/portfolio";
 
-const EMAIL = "hridul54@gmail.com";
+const EMAIL = profile.email;
 const EMAIL_SUBJECT = "Let's build something meaningful";
 
 const navigation = [
@@ -75,26 +79,7 @@ export function Footer() {
     if (!launching) return;
 
     const timer = window.setTimeout(() => {
-      const isMobile =
-        /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-        (navigator.platform === "MacIntel" &&
-          navigator.maxTouchPoints > 1);
-
-      if (isMobile) {
-        const mailtoUrl = new URL(`mailto:${EMAIL}`);
-        mailtoUrl.searchParams.set("subject", EMAIL_SUBJECT);
-
-        window.location.href = mailtoUrl.toString();
-      } else {
-        const gmailUrl = new URL("https://mail.google.com/mail/");
-
-        gmailUrl.searchParams.set("view", "cm");
-        gmailUrl.searchParams.set("fs", "1");
-        gmailUrl.searchParams.set("to", EMAIL);
-        gmailUrl.searchParams.set("su", EMAIL_SUBJECT);
-
-        window.location.href = gmailUrl.toString();
-      }
+      window.location.href = emailDraftHrefForCurrentDevice(EMAIL_SUBJECT, "");
     }, prefersReducedMotion ? 200 : 1400);
 
     return () => window.clearTimeout(timer);
